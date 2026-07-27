@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Cairo } from "next/font/google";
 import "./globals.css";
 import { Providers } from "@/app/providers";
+import { Navbar } from "@/components/layout/Navbar";
 
 const cairo = Cairo({
   subsets: ["arabic", "latin"],
@@ -33,8 +34,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ar" dir="rtl" suppressHydrationWarning>
-      <body className={`${cairo.variable} font-sans antialiased`}>
-        <Providers>{children}</Providers>
+      <body
+        className={`${cairo.variable} font-sans antialiased mx-auto max-w-lg px-4 py-6 pb-24 flex flex-col gap-4`}
+        dir="rtl"
+      >
+        <Providers>
+          <Navbar />
+          {children}
+        </Providers>
       </body>
     </html>
   );
